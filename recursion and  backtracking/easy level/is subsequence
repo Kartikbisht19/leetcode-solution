@@ -1,0 +1,19 @@
+class Solution {
+public:int check(int i, int j,string s,string t){
+    if(i==s.size() || j==t.size()){
+        return 0;
+    }
+    if(s[i]==t[j]){
+        return 1+check(i+1,j+1,s,t);
+    }
+    else {
+        return check(i,j+1,s,t);
+    }
+}
+    bool isSubsequence(string s, string t) {
+        if(check(0,0,s,t)==s.size()){
+            return true;
+        }
+        return false;
+    }
+};
