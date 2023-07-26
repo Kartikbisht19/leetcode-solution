@@ -1,0 +1,28 @@
+class Solution {
+public:
+void check(int i, vector<int> &nums, vector<vector<int>> &ans, vector<int> &v, int freq[]){
+        if(v.size()==nums.size()){
+        ans.push_back(v);
+        return ;
+    }
+    for(int i=0;i<nums.size();i++){
+        if(freq[i]==0){
+        v.push_back(nums[i]);
+        freq[i]=1;
+        check(i+1,nums,ans,v,freq);
+        v.pop_back();
+        freq[i]=0;
+        }
+    }
+}
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>>ans;
+        vector<int>v;
+        int freq[nums.size()];
+        for(int i=0;i<nums.size();i++){
+            freq[i]=0;
+        }
+        check(0,nums,ans,v,freq);
+        return ans;
+    }
+};
