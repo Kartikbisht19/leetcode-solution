@@ -1,0 +1,21 @@
+#define mod 1000000007
+class Solution {
+  
+public:
+long long pw(long long x, long long y){
+    if(y==0){
+        return 1;
+    }    
+    long long reslt=pw(x,y/2);
+    reslt=reslt*reslt;
+    reslt=reslt%mod;
+    if(y%2)reslt=reslt*x;
+    reslt=reslt%mod;
+    return reslt;
+}
+    int countGoodNumbers(long long n) {
+       long long odd=n/2;
+       long long even=n/2+n%2;
+       return (pw(5,even)*pw(4,odd))%mod;
+    }
+};
