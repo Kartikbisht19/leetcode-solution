@@ -1,0 +1,17 @@
+class Solution {
+public:
+void check(string s,int o,int c,int n, vector<string> &ans){
+    if(s.size()==n*2){
+        ans.push_back(s);
+        return;
+    }
+    if(o<n)check(s+"(",o+1,c,n,ans);
+    if(c<o)check(s+")",o,c+1,n,ans);
+}
+ vector<string> generateParenthesis(int n) {
+     vector<string>ans;
+     
+     check("(",1,0,n,ans);
+     return ans;
+    }
+};
